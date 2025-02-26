@@ -14,7 +14,6 @@ export const userRegister = async (params: any) => {
 
 /**
  * 获取当前用户
- * @param params
  */
 export const getCurrentUser = async () => {
   return await myAxios.request({

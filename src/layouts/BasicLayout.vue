@@ -2,11 +2,11 @@
 import GlobalHeader from "@/components/GlobalHeader.vue";
 import { CopyrightCircleOutlined } from "@ant-design/icons-vue";
 import HomeCarousel from "@/components/HomeCarousel.vue";
-import { getCurrentUser } from "@/api/user";
+// import { getCurrentUser } from "@/api/user";
 
-getCurrentUser().then((res) => {
-  console.log(res);
-});
+// getCurrentUser().then((res) => {
+//   console.log(res);
+// });
 </script>
 
 <template>
@@ -16,7 +16,6 @@ getCurrentUser().then((res) => {
         <GlobalHeader />
       </a-layout-header>
       <a-layout-content class="content">
-        <HomeCarousel />
         <router-view />
       </a-layout-content>
       <a-layout-footer class="footer">

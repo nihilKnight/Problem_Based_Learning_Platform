@@ -17,9 +17,10 @@
         />
       </a-col>
 
-      <a-col flex="80px">
+      <a-col flex="160px">
         <div class="user-login-status">
           <a-button type="primary" href="/user/login">登录</a-button>
+          <a-button href="/user/register">注册</a-button>
         </div>
       </a-col>
     </a-row>
@@ -28,7 +29,7 @@
 
 <script lang="ts" setup>
 import { h, ref } from "vue";
-import { HomeOutlined, CrownOutlined } from "@ant-design/icons-vue";
+import { HomeOutlined, UnorderedListOutlined } from "@ant-design/icons-vue";
 import { MenuProps } from "ant-design-vue";
 import { useRouter } from "vue-router";
 
@@ -54,20 +55,20 @@ const items = ref<MenuProps["items"]>([
     title: "主页",
   },
   {
-    key: "/user/login",
-    label: "用户登录",
-    title: "用户登录",
+    key: "/courseList",
+    icon: () => h(UnorderedListOutlined),
+    label: "课程列表",
+    title: "课程列表",
   },
   {
-    key: "/user/register",
-    label: "用户注册",
-    title: "用户注册",
+    key: "/intro",
+    label: "项目简介",
+    title: "项目简介",
   },
   {
-    key: "/admin/userManage",
-    icon: () => h(CrownOutlined),
-    label: "用户管理",
-    title: "用户管理",
+    key: "/about",
+    label: "关于我们",
+    title: "关于我们",
   },
   {
     key: "others",
@@ -95,5 +96,12 @@ const items = ref<MenuProps["items"]>([
 
 #globalHeader .logo {
   height: 48px;
+}
+
+#globalHeader .user-login-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
 }
 </style>
