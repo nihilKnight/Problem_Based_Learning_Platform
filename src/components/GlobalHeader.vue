@@ -4,7 +4,10 @@
       <a-col flex="250px">
         <div class="title-bar">
           <img class="logo" src="../assets/logo.png" alt="logo" />
-          <div class="title">临床案例学习平台</div>
+          <div>
+            <div class="title">医思智学</div>
+            <div class="subtitle">PBL数字化教学系统</div>
+          </div>
         </div>
       </a-col>
 
@@ -61,6 +64,11 @@ const items = ref<MenuProps["items"]>([
     title: "课程列表",
   },
   {
+    key: "/pblIntro",
+    label: "PBL简介",
+    title: "PBL简介",
+  },
+  {
     key: "/intro",
     label: "项目简介",
     title: "项目简介",
@@ -90,8 +98,19 @@ const items = ref<MenuProps["items"]>([
 
 #globalHeader .title {
   color: black;
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: bold;
   margin-left: 16px;
+  margin-top: -14px;
+}
+
+#globalHeader .subtitle {
+  font-size: 14px;
+  font-weight: normal;
+  color: #888;
+  margin-left: 16px;
+  margin-top: -8px;
+  line-height: 1.5;
 }
 
 #globalHeader .logo {

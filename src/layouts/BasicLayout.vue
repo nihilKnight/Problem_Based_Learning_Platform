@@ -40,8 +40,8 @@ import HomeCarousel from "@/components/HomeCarousel.vue";
 }
 
 #basicLayout .content {
-  padding: 20px;
-  margin-bottom: 20px;
+  padding: 30px;
+  margin-bottom: 30px;
   background: linear-gradient(to right, whitesmoke, white);
 }
 

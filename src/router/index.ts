@@ -1,12 +1,24 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 import HomeView from "@/views/HomeView.vue";
 import IntroView from "@/views/IntroView.vue";
+import CoursesListView from "@/views/CoursesListView.vue";
+import PBLIntroView from "@/views/PBLIntroView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "home",
     component: HomeView,
+  },
+  {
+    path: "/courseList",
+    name: "courseList",
+    component: CoursesListView,
+  },
+  {
+    path: "/pblIntro",
+    name: "pblIntro",
+    component: PBLIntroView,
   },
   {
     path: "/intro",

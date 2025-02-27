@@ -2,10 +2,9 @@
   <div id="homeSlide">
     <a-carousel class="homeCarousel" autoplay>
       <div>
-        <img
-          src="https://images.unsplash.com/photo-1539356891430-52718ed0bfd6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="unsplash fig1"
-        />
+        <a href="https://roam30.github.io">
+          <img src="../assets/cover.png" alt="unsplash fig1" />
+        </a>
       </div>
       <div>
         <img
