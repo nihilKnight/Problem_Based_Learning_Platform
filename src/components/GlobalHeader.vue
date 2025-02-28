@@ -21,9 +21,12 @@
       </a-col>
 
       <a-col flex="160px">
-        <div class="user-login-status">
-          <a-button type="primary" href="/user/login">登录</a-button>
-          <a-button href="/user/register">注册</a-button>
+        <div v-if="!loginUserStore.loginUser.code" class="user-login-status">
+          <a-button type="primary" href="#/login">登录</a-button>
+          <a-button href="#/register">注册</a-button>
+        </div>
+        <div v-else>
+          你好，<a href="#/profile">{{ loginUserStore.loginUser.username }}</a>
         </div>
       </a-col>
     </a-row>
@@ -31,21 +34,27 @@
 </template>
 
 <script lang="ts" setup>
-import { h, ref } from "vue";
+import { h, onMounted, ref } from "vue";
 import { HomeOutlined, UnorderedListOutlined } from "@ant-design/icons-vue";
 import { MenuProps } from "ant-design-vue";
 import { useRouter } from "vue-router";
+import { useLoginUserStore } from "@/store/useLoginUserStore";
 
+const loginUserStore = useLoginUserStore();
 const router = useRouter();
 
-// 导航栏路由跳转实现
+// Menu Router redirect
 const doMenuClick = ({ key }: { key: string }) => {
   router.push({
     path: key,
   });
 };
 
-const current = ref<string[]>([]);
+onMounted(() => {
+  console.log("mounted");
+});
+
+const current = ref<string[]>(["/"]);
 router.afterEach((to, from, failure) => {
   current.value = [to.path];
 });

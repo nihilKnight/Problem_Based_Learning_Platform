@@ -2,7 +2,7 @@
   <div id="CoursesList">
     <a-list
       item-layout="vertical"
-      size="large"
+      size="default"
       :pagination="pagination"
       :data-source="listData"
     >

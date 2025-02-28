@@ -1,27 +1,28 @@
 <script setup lang="ts">
 import GlobalHeader from "@/components/GlobalHeader.vue";
 import { CopyrightCircleOutlined } from "@ant-design/icons-vue";
-import HomeCarousel from "@/components/HomeCarousel.vue";
-// import { getCurrentUser } from "@/api/user";
+import { useRoute } from "vue-router";
+import { computed } from "vue";
 
-// getCurrentUser().then((res) => {
-//   console.log(res);
-// });
+const route = useRoute();
+
+const showHeaderAndFooter = computed(
+  () => !["/login", "/register"].includes(route.path)
+);
 </script>
 
 <template>
   <div id="basicLayout">
     <a-layout>
-      <a-layout-header class="header">
+      <a-layout-header v-if="showHeaderAndFooter" class="header">
         <GlobalHeader />
       </a-layout-header>
       <a-layout-content class="content">
         <router-view />
       </a-layout-content>
-      <a-layout-footer class="footer">
+      <a-layout-footer v-if="showHeaderAndFooter" class="footer">
         <CopyrightCircleOutlined />
         2025 Guyvhu. All Rights Reserved
-        <!--        <a href="https://github.com/roam30" style="color: darkgrey"> Guyvhu's Github </a>-->
       </a-layout-footer>
     </a-layout>
   </div>

@@ -1,7 +1,7 @@
 import myAxios from "@/request";
 
 /**
- * 用户注册
+ * User register.
  * @param params
  */
 export const userRegister = async (params: any) => {
@@ -13,7 +13,19 @@ export const userRegister = async (params: any) => {
 };
 
 /**
- * 获取当前用户
+ * User Login.
+ * @param params
+ */
+export const userLogin = async (params: any) => {
+  return await myAxios.request({
+    url: "/api/v1/user/login",
+    method: "POST",
+    data: params,
+  });
+};
+
+/**
+ * Get current user; if not login, return response with 40100 code.
  */
 export const getCurrentUser = async () => {
   return await myAxios.request({
