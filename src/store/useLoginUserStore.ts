@@ -1,17 +1,15 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import { getCurrentUser } from "@/api/user";
-import { LoginSuccessCode } from "@/main";
+import { LoginSuccessCode, NoLoginCode } from "@/main";
 
 export const useLoginUserStore = defineStore("loginUser", () => {
-  const loginUser = ref<any>({ username: "", code: 0 });
+  const loginUser = ref<any>({ username: "", code: NoLoginCode });
 
   // fetch login user info remotely.
   async function fetchLoginUser() {
     const res = await getCurrentUser();
-    console.log(res);
     if (res.data.code === LoginSuccessCode) {
-      console.log(res.data);
       loginUser.value = res.data;
     }
   }

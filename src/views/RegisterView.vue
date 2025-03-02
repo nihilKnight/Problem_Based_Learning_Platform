@@ -1,8 +1,39 @@
 <script setup lang="ts">
-import myAxios from "@/request";
+import { reactive } from "vue";
+import { userRegister } from "@/api/user";
+import { LoginSuccessCode } from "@/main";
+import { SendVerifyCode } from "@/api/verifyCode";
 
-const sendVerificationCode = () => {
-  myAxios.request({});
+const form = reactive({
+  email: "",
+  username: "",
+  password: "",
+  verifyCode: ""
+});
+const handleRegister = async () => {
+  try {
+    const res = await userRegister(form);
+    console.log(res);
+
+    res.data.success
+      ? (window.location.href = "/#/login")
+      : alert(res.data.message);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const sendVerificationCode = async () => {
+  try {
+    const res = await SendVerifyCode(form);
+    console.log(res);
+
+    res.data.success
+      ? console.log("Success to send verify code.")
+      : alert(res.data.message);
+  } catch (err) {
+    console.log(err);
+  }
 };
 </script>
 
@@ -10,30 +41,55 @@ const sendVerificationCode = () => {
   <div class="register-layout">
     <div class="form-container">
       <h2>注册账号</h2>
-      <form method="POST">
+
+      <form method="POST" @submit.prevent="handleRegister">
         <div class="form-group">
-          <input type="email" name="email" placeholder="电子邮箱" required />
+          <input
+            type="email"
+            name="email"
+            placeholder="电子邮箱"
+            v-model="form.email"
+            required
+          />
         </div>
+
         <div class="form-group">
-          <input type="text" name="username" placeholder="用户名" required />
+          <input
+            type="text"
+            name="username"
+            placeholder="用户名"
+            v-model="form.username"
+            required
+          />
         </div>
+
         <div class="form-group">
-          <input type="password" name="password" placeholder="密码" required />
+          <input
+            type="password"
+            name="password"
+            placeholder="密码"
+            v-model="form.password"
+            required
+          />
         </div>
+
         <div class="form-group verification-group">
           <input
             type="text"
             name="verification_code"
             placeholder="验证码"
+            v-model="form.verifyCode"
             required
           />
           <button type="button" class="send-code" @click="sendVerificationCode">
             获取验证码
           </button>
         </div>
+
         <button type="submit">立即注册</button>
       </form>
-      <div class="links">已有账号？<a href="#/login">立即登录</a></div>
+
+      <div class="links">已有账号？<a href="/#/login">立即登录</a></div>
     </div>
   </div>
 </template>

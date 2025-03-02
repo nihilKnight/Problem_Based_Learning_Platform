@@ -80,7 +80,7 @@ const handleLogin = async () => {
       </form>
 
       <div class="links">
-        <a href="#/register">立即注册</a>
+        <a href="/#/register">立即注册</a>
         <!--<a href="#forgot-password">忘记密码？</a>-->
       </div>
     </div>
