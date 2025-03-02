@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, reactive } from "vue";
 import { getCaptcha } from "@/api/captcha";
+import { userLogin } from "@/api/user";
+import { LoginSuccessCode } from "@/main";
 
 const captchaSrc = ref<string>("");
 const refreshCaptcha = async () => {
@@ -17,8 +19,23 @@ const refreshCaptcha = async () => {
 
 refreshCaptcha();
 
-const onSubmit = (e: Event) => {
-  console.log(e);
+const form = reactive({
+  account: "",
+  password: "",
+  captcha: "",
+});
+
+const handleLogin = async () => {
+  try {
+    const res = await userLogin(form);
+    console.log(res);
+
+    res.data.code === LoginSuccessCode
+      ? (window.location.href = "/#/")
+      : alert(res.data.message);
+  } catch (err) {
+    console.log(err);
+  }
 };
 </script>
 
@@ -26,24 +43,42 @@ const onSubmit = (e: Event) => {
   <div class="login-layout">
     <div class="form-container">
       <h2>登录</h2>
-      <form method="POST">
+
+      <form method="POST" @submit.prevent="handleLogin">
         <div class="form-group">
           <input
             type="text"
             name="account"
             placeholder="用户名/邮箱"
+            v-model="form.account"
             required
           />
         </div>
+
         <div class="form-group">
-          <input type="password" name="password" placeholder="密码" required />
+          <input
+            type="password"
+            name="password"
+            placeholder="密码"
+            v-model="form.password"
+            required
+          />
         </div>
+
         <div class="form-group captcha-group">
-          <input type="text" name="captcha" placeholder="验证码" required />
+          <input
+            type="text"
+            name="captcha"
+            placeholder="验证码"
+            v-model="form.captcha"
+            required
+          />
           <img :src="captchaSrc" alt="验证码" @click="refreshCaptcha" />
         </div>
-        <button type="submit" @click="onSubmit">登录</button>
+
+        <button type="submit">登录</button>
       </form>
+
       <div class="links">
         <a href="#/register">立即注册</a>
         <!--<a href="#forgot-password">忘记密码？</a>-->

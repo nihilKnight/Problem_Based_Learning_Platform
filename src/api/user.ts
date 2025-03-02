@@ -17,6 +17,7 @@ export const userRegister = async (params: any) => {
  * @param params
  */
 export const userLogin = async (params: any) => {
+  console.log(params);
   return await myAxios.request({
     url: "/api/v1/user/login",
     method: "POST",

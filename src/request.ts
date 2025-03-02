@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from "axios";
+// import { NoLoginCode } from "@/main";
 
 const myAxios: AxiosInstance = axios.create({
   baseURL: "http://localhost:5000",
@@ -28,7 +29,7 @@ myAxios.interceptors.response.use(
 
     // no login (with code 40100)
     // const { data } = response;
-    // if (data.code === 40100) {
+    // if (data.code === NoLoginCode) {
     //   if (
     //     !response.request.responseURL.include("user/current") &&
     //     !window.location.pathname.includes("/user/login")

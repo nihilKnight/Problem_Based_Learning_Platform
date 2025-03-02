@@ -21,7 +21,10 @@
       </a-col>
 
       <a-col flex="160px">
-        <div v-if="!loginUserStore.loginUser.code" class="user-login-status">
+        <div
+          v-if="loginUserStore.loginUser.code === NoLoginCode"
+          class="user-login-status"
+        >
           <a-button type="primary" href="#/login">登录</a-button>
           <a-button href="#/register">注册</a-button>
         </div>
@@ -39,8 +42,11 @@ import { HomeOutlined, UnorderedListOutlined } from "@ant-design/icons-vue";
 import { MenuProps } from "ant-design-vue";
 import { useRouter } from "vue-router";
 import { useLoginUserStore } from "@/store/useLoginUserStore";
+import { NoLoginCode } from "@/main";
 
 const loginUserStore = useLoginUserStore();
+loginUserStore.fetchLoginUser();
+
 const router = useRouter();
 
 // Menu Router redirect
@@ -49,10 +55,6 @@ const doMenuClick = ({ key }: { key: string }) => {
     path: key,
   });
 };
-
-onMounted(() => {
-  console.log("mounted");
-});
 
 const current = ref<string[]>(["/"]);
 router.afterEach((to, from, failure) => {
