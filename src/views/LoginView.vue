@@ -28,7 +28,6 @@ const form = reactive({
 const handleLogin = async () => {
   try {
     const res = await userLogin(form);
-    console.log(res);
 
     res.data.code === LoginSuccessCode
       ? (window.location.href = "/#/")

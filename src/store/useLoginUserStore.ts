@@ -4,7 +4,7 @@ import { getCurrentUser } from "@/api/user";
 import { LoginSuccessCode, NoLoginCode } from "@/main";
 
 export const useLoginUserStore = defineStore("loginUser", () => {
-  const loginUser = ref<any>({ username: "", code: NoLoginCode });
+  const loginUser = ref<any>({ username: "", email: "", code: NoLoginCode });
 
   // fetch login user info remotely.
   async function fetchLoginUser() {

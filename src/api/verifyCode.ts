@@ -10,9 +10,11 @@ import myAxios from "@/request";
  * @returns {Promise} A promise that resolves with the response of the HTTP request.
  */
 export const SendVerifyCode = async (params: any) => {
+  console.log(params);
   return await myAxios.request({
     url: "api/v1/sendCode",
     method: "POST",
-    data: params
+    data: params,
+    timeout: 30000,
   });
 };
