@@ -31,9 +31,9 @@ export const userLogin = async (params: any) => {
 export const userLogout = async () => {
   return await myAxios.request({
     url: "/api/v1/user/logout",
-    method: "GET"
+    method: "GET",
   });
-}
+};
 
 /**
  * Get current user; if not login, return response with 40100 code.

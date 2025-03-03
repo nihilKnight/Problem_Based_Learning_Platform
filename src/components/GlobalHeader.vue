@@ -48,7 +48,7 @@ const router = useRouter();
 // Menu Router redirect
 const doMenuClick = ({ key }: { key: string }) => {
   router.push({
-    path: key
+    path: key,
   });
 };
 
@@ -62,28 +62,28 @@ const items = ref<MenuProps["items"]>([
     key: "/",
     icon: () => h(HomeOutlined),
     label: "主页",
-    title: "主页"
+    title: "主页",
   },
   {
     key: "/courseList",
     icon: () => h(UnorderedListOutlined),
     label: "课程列表",
-    title: "课程列表"
+    title: "课程列表",
   },
   {
     key: "/pblIntro",
     label: "PBL简介",
-    title: "PBL简介"
+    title: "PBL简介",
   },
   {
     key: "/intro",
     label: "项目简介",
-    title: "项目简介"
+    title: "项目简介",
   },
   {
     key: "/about",
     label: "关于我们",
-    title: "关于我们"
+    title: "关于我们",
   },
   {
     key: "others",
@@ -92,8 +92,8 @@ const items = ref<MenuProps["items"]>([
       { href: "https://github.com/roam30", target: "_blank" },
       "Guyvhu's Github"
     ),
-    title: "Guyvhu's Github"
-  }
+    title: "Guyvhu's Github",
+  },
 ]);
 </script>
 

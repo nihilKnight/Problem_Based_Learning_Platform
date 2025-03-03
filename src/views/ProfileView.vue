@@ -17,7 +17,7 @@ const form = reactive({
   email: "",
   newPassword: "",
   currentPassword: "",
-  verifyCode: ""
+  verifyCode: "",
 });
 
 // 初始化用户数据
@@ -25,7 +25,7 @@ onMounted(async () => {
   await loginUserStore.fetchLoginUser();
   Object.assign(form, {
     username: loginUserStore.loginUser.username,
-    email: loginUserStore.loginUser.email
+    email: loginUserStore.loginUser.email,
   });
 });
 
@@ -64,7 +64,6 @@ const sendVerificationCode = async () => {
       countdown.value--;
       if (countdown.value <= 0) clearInterval(timer);
     }, 1000);
-
   } catch (error) {
     console.error("发送验证码失败:", error);
   }
@@ -76,7 +75,11 @@ const handleLogout = async () => {
     const res = await userLogout();
 
     if (res.data.code === NoLoginCode) {
-      loginUserStore.setLoginUser({ username: "", email: "", code: NoLoginCode });
+      loginUserStore.setLoginUser({
+        username: "",
+        email: "",
+        code: NoLoginCode,
+      });
       window.location.href = "/#/";
     }
   } catch (e) {
@@ -116,14 +119,18 @@ const handleLogout = async () => {
       </div>
 
       <div class="form-group verification-group">
-        <input v-model="form.verifyCode"
-               type="text"
-               placeholder="验证码"
-               required>
-        <button type="button"
-                class="send-code"
-                :disabled="countdown > 0"
-                @click="sendVerificationCode">
+        <input
+          v-model="form.verifyCode"
+          type="text"
+          placeholder="验证码"
+          required
+        />
+        <button
+          type="button"
+          class="send-code"
+          :disabled="countdown > 0"
+          @click="sendVerificationCode"
+        >
           {{ countdown > 0 ? `${countdown}秒后重试` : "发送验证码" }}
         </button>
       </div>
@@ -139,7 +146,9 @@ const handleLogout = async () => {
       </div>
 
       <div class="form-actions">
-        <button type="button" @click="toggleEdit" class="cancel-btn">取消</button>
+        <button type="button" @click="toggleEdit" class="cancel-btn">
+          取消
+        </button>
         <button type="submit" class="submit-btn">保存更改</button>
       </div>
     </form>
@@ -152,15 +161,15 @@ const handleLogout = async () => {
 <style scoped>
 /* 基础架构 */
 .profile-container {
-  --primary-color: #2D3748; /* 石墨灰 */
-  --accent-color: #4299E1; /* 天空蓝 */
-  --success-color: #48BB78; /* 森林绿 */
-  --danger-color: #F56565; /* 珊瑚红 */
-  --surface-color: #FFFFFF; /* 纯净白 */
+  --primary-color: #2d3748; /* 石墨灰 */
+  --accent-color: #4299e1; /* 天空蓝 */
+  --success-color: #48bb78; /* 森林绿 */
+  --danger-color: #f56565; /* 珊瑚红 */
+  --surface-color: #ffffff; /* 纯净白 */
   --border-radius: 8px;
   --transition-speed: 0.2s;
 
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: "Inter", system-ui, sans-serif;
   max-width: 480px;
   margin: 2rem auto;
   padding: 2rem;
@@ -205,7 +214,7 @@ h2 {
 }
 
 .info-item span {
-  color: #2D3748;
+  color: #2d3748;
   font-weight: 500;
   word-break: break-word;
 }
@@ -218,7 +227,7 @@ h2 {
 input {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #E2E8F0;
+  border: 1px solid #e2e8f0;
   border-radius: var(--border-radius);
   font-size: 0.875rem;
   transition: border-color var(--transition-speed);
@@ -237,8 +246,7 @@ button {
   font-weight: 500;
   border-radius: var(--border-radius);
   border: none;
-  transition: background-color var(--transition-speed),
-  transform 0.1s;
+  transition: background-color var(--transition-speed), transform 0.1s;
 }
 
 button:active {
@@ -254,12 +262,12 @@ button:active {
 }
 
 .submit-btn {
-  background: #2196F3;
+  background: #2196f3;
   color: white;
 }
 
 .cancel-btn {
-  background: #9E9E9E;
+  background: #9e9e9e;
   color: white;
 }
 
@@ -282,7 +290,7 @@ button:active {
     margin: 1rem;
     padding: 1.5rem;
     box-shadow: none;
-    border: 1px solid #EDF2F7;
+    border: 1px solid #edf2f7;
   }
 }
 

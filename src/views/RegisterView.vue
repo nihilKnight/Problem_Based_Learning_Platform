@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
 import { userRegister } from "@/api/user";
-import { LoginSuccessCode } from "@/main";
 import { SendVerifyCode } from "@/api/verifyCode";
 
 const countdown = ref(0);
@@ -9,7 +8,7 @@ const form = reactive({
   email: "",
   username: "",
   password: "",
-  verifyCode: ""
+  verifyCode: "",
 });
 const handleRegister = async () => {
   try {
@@ -25,7 +24,7 @@ const handleRegister = async () => {
 };
 
 const sendVerificationCode = async () => {
-  if (countdown.value > 0) return
+  if (countdown.value > 0) return;
 
   try {
     const res = await SendVerifyCode(form);
@@ -34,16 +33,15 @@ const sendVerificationCode = async () => {
       ? console.log("Success to send verify code.")
       : alert(res.data.message);
 
-    countdown.value = 60
+    countdown.value = 60;
     const timer = setInterval(() => {
-      countdown.value--
-      if (countdown.value <= 0) clearInterval(timer)
-    }, 1000)
-
+      countdown.value--;
+      if (countdown.value <= 0) clearInterval(timer);
+    }, 1000);
   } catch (error) {
-    console.error('发送验证码失败:', error)
+    console.error("发送验证码失败:", error);
   }
-}
+};
 </script>
 
 <template>
@@ -83,14 +81,18 @@ const sendVerificationCode = async () => {
         </div>
 
         <div class="form-group verification-group">
-          <input v-model="form.verifyCode"
-                 type="text"
-                 placeholder="验证码"
-                 required>
-          <button type="button"
-                  class="send-code"
-                  :disabled="countdown > 0"
-                  @click="sendVerificationCode">
+          <input
+            v-model="form.verifyCode"
+            type="text"
+            placeholder="验证码"
+            required
+          />
+          <button
+            type="button"
+            class="send-code"
+            :disabled="countdown > 0"
+            @click="sendVerificationCode"
+          >
             {{ countdown > 0 ? `${countdown}秒后重试` : "发送验证码" }}
           </button>
         </div>

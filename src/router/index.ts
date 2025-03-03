@@ -7,6 +7,7 @@ import PBLIntroView from "@/views/PBLIntroView.vue";
 import ProfileView from "@/views/ProfileView.vue";
 import LoginView from "@/views/LoginView.vue";
 import RegisterView from "@/views/RegisterView.vue";
+import CourseDetailView from "@/views/CourseDetailView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -18,6 +19,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/courseList",
     name: "courseList",
     component: CoursesListView,
+  },
+  {
+    path: "/courseDetail",
+    name: "courseDetail",
+    component: CourseDetailView,
   },
   {
     path: "/pblIntro",
