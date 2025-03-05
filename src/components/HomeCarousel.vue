@@ -1,20 +1,8 @@
 <template>
-  <div id="homeSlide">
+  <div id="homeSlide" class="carousel-container">
     <a-carousel class="homeCarousel" autoplay>
-      <div>
-        <!--        <a href="https://roam30.github.io">-->
-        <img src="@/assets/Carousel1.jpg" alt="Carousel1" />
-        <!--        </a>-->
-      </div>
-      <div>
-        <img src="@/assets/Carousel2.png" alt="Carousel2" />
-      </div>
-      <div>
-        <img src="@/assets/Carousel3.png" alt="Carousel3" />
-        />
-      </div>
-      <div>
-        <img src="@/assets/Carousel4.png" alt="Carousel4" />
+      <div v-for="(slide, index) in slides" :key="index">
+        <img :src="slide" :alt="`Carousel${index + 1}`" />
       </div>
     </a-carousel>
   </div>
@@ -22,12 +10,21 @@
 
 <style scoped>
 /* For demo */
+
+.carousel-container {
+  background-color: #e6f7ff; /* 浅天蓝色 */
+  height: 30vh;
+  border-radius: 8px; /* 可选：添加圆角 */
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05); /* 可选：添加微妙阴影 */
+}
+
 :deep(.slick-slide) {
-  text-align: center;
-  height: 600px;
-  line-height: 600px;
-  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
   overflow: hidden;
+  background: RGB(224, 255, 255);
 }
 
 :deep(.slick-slide img) {
@@ -37,4 +34,23 @@
 }
 </style>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { onMounted, ref } from "vue";
+import { getCarousel } from "@/api/carousel";
+
+const slides = ref([]);
+
+const fetchCarousel = async () => {
+  try {
+    const res = await getCarousel();
+
+    res.data.success ? (slides.value = res.data.data) : alert("获取轮播图失败");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+onMounted(() => {
+  fetchCarousel();
+});
+</script>

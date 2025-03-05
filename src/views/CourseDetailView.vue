@@ -48,7 +48,7 @@ const loading = ref(true);
 
 // 格式化日期
 const formatDate = (dateString) => {
-  return new Date(dateString).toLocaleDateString();
+  return new Date(dateString).toLocaleDateString("zh-cn");
 };
 
 // 获取课程数据

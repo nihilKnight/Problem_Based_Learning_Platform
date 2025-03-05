@@ -17,12 +17,12 @@
           <template #extra>
             <img width="272" alt="logo" :src="item.cover" />
           </template>
-          <a-list-item-meta :description="item.description">
+          <a-list-item-meta :description="item.brief">
             <template #title>
               <a @click="() => doCourseDetailCLick(item)">{{ item.title }}</a>
             </template>
             <template #avatar>
-              <a-avatar :src="item.cover" />
+              <a-avatar :src="item.avatar" />
             </template>
           </a-list-item-meta>
           {{ item.description }}
@@ -53,6 +53,8 @@ const fetchCourseList = async () => {
     res.data.success
       ? (courseList.value = res.data.data)
       : alert(res.data.message);
+
+    console.log(courseList.value);
   } catch (error) {
     console.error("获取课程列表失败：", error);
   }

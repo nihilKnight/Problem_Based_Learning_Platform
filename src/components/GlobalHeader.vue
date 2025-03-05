@@ -121,14 +121,15 @@ const items = ref<MenuProps["items"]>([
 }
 
 #globalHeader .logo {
-  margin-top: -42px;
   width: 150px;
 }
 
 #globalHeader .user-login-status {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   height: 60%;
+  margin-top: 10px;
 }
 </style>
