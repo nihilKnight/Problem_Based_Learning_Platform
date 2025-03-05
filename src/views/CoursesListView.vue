@@ -4,28 +4,28 @@
       item-layout="vertical"
       size="default"
       :pagination="pagination"
-      :data-source="listData"
+      :data-source="courseList"
     >
       <template #renderItem="{ item }">
         <a-list-item key="item.title">
-          <template #actions>
-            <span v-for="{ icon, text } in actions" :key="icon">
-              <component :is="icon" style="margin-right: 8px" />
-              {{ text }}
-            </span>
-          </template>
+          <!--          <template #actions>-->
+          <!--            <span v-for="{ icon, text } in actions" :key="icon">-->
+          <!--              <component :is="icon" style="margin-right: 8px" />-->
+          <!--              {{ text }}-->
+          <!--            </span>-->
+          <!--          </template>-->
           <template #extra>
-            <img width="272" alt="logo" :src="item.img" />
+            <img width="272" alt="logo" :src="item.cover" />
           </template>
           <a-list-item-meta :description="item.description">
             <template #title>
-              <a :href="item.href">{{ item.title }}</a>
+              <a @click="() => doCourseDetailCLick(item)">{{ item.title }}</a>
             </template>
             <template #avatar>
-              <a-avatar :src="item.avatar" />
+              <a-avatar :src="item.cover" />
             </template>
           </a-list-item-meta>
-          {{ item.content }}
+          {{ item.description }}
         </a-list-item>
       </template>
     </a-list>
@@ -33,27 +33,40 @@
 </template>
 
 <script lang="ts" setup>
-import {
-  StarOutlined,
-  LikeOutlined,
-  MessageOutlined,
-} from "@ant-design/icons-vue";
+// import {
+//   StarOutlined,
+//   LikeOutlined,
+//   MessageOutlined,
+// } from "@ant-design/icons-vue";
+import { ref, onMounted } from "vue";
+import { getCourseList } from "@/api/course";
+import { useRouter } from "vue-router";
 
-const listData: Record<string, string>[] = [];
+const router = useRouter();
 
-for (let i = 0; i < 23; i++) {
-  listData.push({
-    href: "https://roam30.github.io",
-    title: `奇怪的肺炎 (copy ${i})`,
-    avatar: require("@/assets/avatar.png"),
-    // img: "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png",
-    img: require("@/assets/cover.png"),
-    description:
-      "8岁男孩张乐天因“奇怪肺炎”入院，症状反复、病原不明，背后隐藏着怎样的免疫谜团？",
-    content:
-      "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
+const courseList = ref([]);
+
+const fetchCourseList = async () => {
+  try {
+    const res = await getCourseList();
+
+    res.data.success
+      ? (courseList.value = res.data.data)
+      : alert(res.data.message);
+  } catch (error) {
+    console.error("获取课程列表失败：", error);
+  }
+};
+
+onMounted(() => {
+  fetchCourseList();
+});
+
+const doCourseDetailCLick = (courseItem: any) => {
+  router.push({
+    path: `/courseDetail/${courseItem.id}`,
   });
-}
+};
 
 const pagination = {
   onChange: (page: number) => {
@@ -61,9 +74,10 @@ const pagination = {
   },
   pageSize: 6,
 };
-const actions: Record<string, any>[] = [
-  { icon: StarOutlined, text: "156" },
-  { icon: LikeOutlined, text: "156" },
-  { icon: MessageOutlined, text: "2" },
-];
+
+// const actions: Record<string, any>[] = [
+//   { icon: StarOutlined, text: "156" },
+//   { icon: LikeOutlined, text: "156" },
+//   { icon: MessageOutlined, text: "2" },
+// ];
 </script>

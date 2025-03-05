@@ -54,8 +54,7 @@ const formatDate = (dateString) => {
 // 获取课程数据
 const fetchCourse = async () => {
   try {
-    // const res = await getCourseDetail(route.params.course_id);
-    const res = await getCourseDetail(1);
+    const res = await getCourseDetail(route.params.courseId);
 
     res.data.success ? (course.value = res.data) : alert(res.data.message);
   } catch (error) {

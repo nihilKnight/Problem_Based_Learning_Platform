@@ -2,27 +2,19 @@
   <div id="homeSlide">
     <a-carousel class="homeCarousel" autoplay>
       <div>
-        <a href="https://roam30.github.io">
-          <img src="../assets/cover.png" alt="unsplash fig1" />
-        </a>
+        <!--        <a href="https://roam30.github.io">-->
+        <img src="@/assets/Carousel1.jpg" alt="Carousel1" />
+        <!--        </a>-->
       </div>
       <div>
-        <img
-          src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="unsplash fig2"
+        <img src="@/assets/Carousel2.png" alt="Carousel2" />
+      </div>
+      <div>
+        <img src="@/assets/Carousel3.png" alt="Carousel3" />
         />
       </div>
       <div>
-        <img
-          src="https://images.unsplash.com/photo-1489887856603-daad26812962?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="unsplash fig3"
-        />
-      </div>
-      <div>
-        <img
-          src="https://images.unsplash.com/photo-1518699086072-d567cb15b483?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="unsplash fig4"
-        />
+        <img src="@/assets/Carousel4.png" alt="Carousel4" />
       </div>
     </a-carousel>
   </div>

@@ -21,7 +21,7 @@ const routes: Array<RouteRecordRaw> = [
     component: CoursesListView,
   },
   {
-    path: "/courseDetail",
+    path: "/courseDetail/:courseId",
     name: "courseDetail",
     component: CourseDetailView,
   },
