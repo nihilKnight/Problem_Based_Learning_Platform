@@ -14,7 +14,9 @@
               创建时间：{{ formatDate(course.created_at) }}
             </p>
             <p class="description">{{ course.description }}</p>
-            <button class="start-button">开始学习</button>
+            <button @click="() => doStartLearning(course)" class="start-button">
+              开始学习
+            </button>
           </div>
           <img :src="course.cover" alt="课程封面" class="cover-image" />
         </div>
@@ -41,8 +43,10 @@
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { getCourseDetail } from "@/api/course";
+import { useRouter } from "vue-router";
 
 const route = useRoute();
+const router = useRouter();
 const course = ref({});
 const loading = ref(true);
 
@@ -62,6 +66,13 @@ const fetchCourse = async () => {
   } finally {
     loading.value = false;
   }
+};
+
+const doStartLearning = (course) => {
+  console.log(course);
+  router.push({
+    path: "/game",
+  });
 };
 
 onMounted(() => {

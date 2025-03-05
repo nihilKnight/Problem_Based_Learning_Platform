@@ -8,6 +8,7 @@ import ProfileView from "@/views/ProfileView.vue";
 import LoginView from "@/views/LoginView.vue";
 import RegisterView from "@/views/RegisterView.vue";
 import CourseDetailView from "@/views/CourseDetailView.vue";
+import GameView from "@/views/GameView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -24,6 +25,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/courseDetail/:courseId",
     name: "courseDetail",
     component: CourseDetailView,
+  },
+  {
+    path: "/game",
+    name: "game",
+    component: GameView,
   },
   {
     path: "/pblIntro",
