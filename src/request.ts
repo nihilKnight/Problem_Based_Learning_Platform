@@ -2,7 +2,8 @@ import axios, { AxiosInstance } from "axios";
 // import { NoLoginCode } from "@/main";
 
 const myAxios: AxiosInstance = axios.create({
-  baseURL: "http://localhost:5000",
+  // baseURL: "http://localhost:5000",
+  baseURL: "http://47.97.59.215",
   timeout: 10000,
   withCredentials: true,
 });

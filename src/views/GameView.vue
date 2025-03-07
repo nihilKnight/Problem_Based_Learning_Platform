@@ -13,10 +13,11 @@
 </template>
 
 <script setup>
+import { useRoute } from "vue-router";
 import { ref } from "vue";
 
-// WebGL项目路径配置
-const webglPath = ref("http://localhost:5000/static/webgls/game1/index.html");
+const route = useRoute();
+const webglPath = ref(decodeURIComponent(route.params.gamePath));
 </script>
 
 <style scoped>

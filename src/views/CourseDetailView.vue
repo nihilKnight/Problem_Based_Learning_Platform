@@ -71,7 +71,10 @@ const fetchCourse = async () => {
 const doStartLearning = (course) => {
   console.log(course);
   router.push({
-    path: "/game",
+    name: "game",
+    params: {
+      gamePath: encodeURIComponent(course.game), // 编码特殊字符
+    },
   });
 };
 

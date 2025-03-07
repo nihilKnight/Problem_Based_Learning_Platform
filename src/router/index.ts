@@ -27,9 +27,10 @@ const routes: Array<RouteRecordRaw> = [
     component: CourseDetailView,
   },
   {
-    path: "/game",
+    path: "/game/:gamePath",
     name: "game",
     component: GameView,
+    props: true,
   },
   {
     path: "/pblIntro",
