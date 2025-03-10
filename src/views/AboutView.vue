@@ -64,9 +64,19 @@ const members = [
     bio: "仰天大笑出门去，我辈岂是蓬蒿人。",
   },
   {
+    avatar: require("../assets/team/members/刘垚.jpeg"),
+    name: "刘垚",
+    bio: "但行好事，莫问前程。",
+  },
+  {
     avatar: require("../assets/team/members/刘雨轩.jpeg"),
     name: "刘雨轩",
     bio: "今年真得环太湖！",
+  },
+  {
+    avatar: require("../assets/team/members/潘智彬.jpeg"),
+    name: "潘智彬",
+    bio: "用舍由时，行藏在我。",
   },
   {
     avatar: require("../assets/team/members/宋文韬.jpeg"),
@@ -74,14 +84,34 @@ const members = [
     bio: "只要肯攀登。",
   },
   {
+    avatar: require("../assets/team/members/万宸宇.jpeg"),
+    name: "万宸宇",
+    bio: "早上好，中午好，晚上好。",
+  },
+  {
+    avatar: require("../assets/team/members/杨滕超.jpeg"),
+    name: "杨滕超",
+    bio: "学医救中国！",
+  },
+  {
     avatar: require("../assets/team/members/杨扬.jpeg"),
     name: "杨扬",
     bio: "努力工作长头发！",
   },
   {
+    avatar: require("../assets/team/members/杨宇琨.jpeg"),
+    name: "杨宇琨",
+    bio: "努力学习，天天向上。",
+  },
+  {
     avatar: require("../assets/team/members/袁俊松.jpeg"),
     name: "袁俊松",
     bio: "埋头做事，抬头作诗。",
+  },
+  {
+    avatar: require("../assets/team/members/张永泽.jpeg"),
+    name: "张永泽",
+    bio: "做多说少，月圆花好。",
   },
 ];
 </script>

@@ -6,7 +6,7 @@
       <div class="meta">
         <span class="category">{{ course.category }}</span>
         <!--        <span class="duration">🕒 {{ course.duration }}小时</span>-->
-        <span class="duration">🕒 2小时</span>
+        <span class="duration">🕒 20min</span>
       </div>
     </div>
   </router-link>

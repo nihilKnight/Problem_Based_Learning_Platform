@@ -101,6 +101,10 @@ const sendVerificationCode = async () => {
       </form>
 
       <div class="links">已有账号？<a href="/#/login">立即登录</a></div>
+
+      <div class="note">注册功能暂未开发（不影响使用），请谅解！</div>
+
+      <div class="note"><a href="/#/">返回首页</a></div>
     </div>
   </div>
 </template>
@@ -157,6 +161,12 @@ button:hover {
 }
 
 .links {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.note {
+  color: #f56565;
   margin-top: 1rem;
   text-align: center;
 }
