@@ -1,92 +1,198 @@
 <template>
-  <div class="about">
-    <h1>关于我们</h1>
-    <ul>
-      <li>
-        <p>人物制作：郝丽莎 杨扬</p>
-      </li>
-      <li>
-        <p>剧情设计：陈若瑜</p>
-      </li>
-      <li>
-        <p>视频讲解：剪映数字人</p>
-      </li>
-    </ul>
+  <div class="about-container">
+    <!-- 指导老师区块 -->
+    <section class="team-section">
+      <h2 class="section-title">指导老师</h2>
+      <div class="cards-grid">
+        <div
+          v-for="(teacher, index) in teachers"
+          :key="'teacher-' + index"
+          class="profile-card"
+        >
+          <img :src="teacher.avatar" alt="导师头像" class="avatar" />
+          <div class="info">
+            <h3 class="name">{{ teacher.name }}</h3>
+            <p class="bio">{{ teacher.bio }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 团队成员区块 -->
+    <section class="team-section">
+      <h2 class="section-title">团队成员</h2>
+      <div class="cards-grid">
+        <div
+          v-for="(member, index) in members"
+          :key="'member-' + index"
+          class="profile-card"
+        >
+          <img :src="member.avatar" alt="成员头像" class="avatar" />
+          <div class="info">
+            <h3 class="name">{{ member.name }}</h3>
+            <p class="bio">{{ member.bio }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup>
+const teachers = [
+  {
+    avatar: require("../assets/team/teachers/邵志华.jpeg"),
+    name: "邵志华",
+    bio: "知止而后有定，定而后能静，静而后能安，安而后能虑，虑而后能得。",
+  },
+];
+
+const members = [
+  {
+    avatar: require("../assets/team/members/陈若瑜.jpeg"),
+    name: "陈若瑜",
+    bio: "那就时不时找点乐子吧！",
+  },
+  {
+    avatar: require("../assets/team/members/郝丽莎.jpeg"),
+    name: "郝丽莎",
+    bio: "睡觉真的好，大家都喜欢睡觉。",
+  },
+  {
+    avatar: require("../assets/team/members/蒋尚堃.jpeg"),
+    name: "蒋尚堃",
+    bio: "仰天大笑出门去，我辈岂是蓬蒿人。",
+  },
+  {
+    avatar: require("../assets/team/members/刘雨轩.jpeg"),
+    name: "刘雨轩",
+    bio: "今年真得环太湖！",
+  },
+  {
+    avatar: require("../assets/team/members/宋文韬.jpeg"),
+    name: "宋文韬",
+    bio: "只要肯攀登。",
+  },
+  {
+    avatar: require("../assets/team/members/杨扬.jpeg"),
+    name: "杨扬",
+    bio: "努力工作长头发！",
+  },
+  {
+    avatar: require("../assets/team/members/袁俊松.jpeg"),
+    name: "袁俊松",
+    bio: "埋头做事，抬头作诗。",
+  },
+];
+</script>
 
 <style scoped>
-.about {
-  max-width: 800px; /* 限制文段的最大宽度 */
-  margin: 0 auto; /* 居中显示并自动留出左右边距 */
-  padding: 20px; /* 上下左右增加内边距，显得更舒展 */
-  line-height: 1.8; /* 行间距，调整为 1.8 倍 */
-  font-size: 16px; /* 适中字体大小，适合阅读 */
-  font-family: "Helvetica Neue", Arial, sans-serif; /* 使用干净简约的字体 */
-  color: #333; /* 浅灰色文字，降低视觉疲劳 */
-  background-color: #f9f9f9; /* 浅灰色背景，提供柔和的视觉效果 */
-  border-radius: 8px; /* 圆角让整体更现代化 */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加轻微阴影，提升层次感 */
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
 }
 
-.about h1 {
-  font-size: 32px; /* 一级标题较大的字体大小 */
-  font-weight: bold; /* 粗体加重强调 */
-  margin-bottom: 24px; /* 标题与内容之间的距离 */
-  color: #222; /* 深灰色，稳重且具有现代感 */
-  border-bottom: 2px solid #007bff; /* 淡蓝色底边，增强视觉层次感 */
-  padding-bottom: 8px; /* 下方内边距，与底边区分开 */
+.team-section {
+  margin-bottom: 4rem;
 }
 
-.about h2 {
-  font-size: 24px; /* 二级标题稍小的字体大小 */
-  font-weight: 600; /* 半粗体（增加层次感但不抢眼） */
-  margin-top: 32px; /* 上方间距，避免与前文段落过近 */
-  margin-bottom: 16px; /* 下方间距，用于与后续内容隔开 */
-  color: #444; /* 略浅的灰色，层次分明 */
+.section-title {
+  color: #2d3748;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
 }
 
-.about p {
-  margin-bottom: 16px; /* 段落间距，保持段落清晰 */
-  text-align: justify; /* 两端对齐，使文段更整齐 */
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: #4299e1;
 }
 
-.about a {
-  color: #007bff; /* 超链接使用淡蓝色，现代而清新 */
-  text-decoration: none; /* 去掉下划线，保持干净 */
-  border-bottom: 1px solid transparent; /* 添加淡蓝色下划线的过渡效果 */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.profile-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1rem;
+  display: block;
+  border: 3px solid #e2e8f0;
   transition: border-color 0.3s ease;
 }
 
-.about a:hover {
-  border-color: #007bff; /* 悬停时下划线变为蓝色 */
+.profile-card:hover .avatar {
+  border-color: #4299e1;
 }
 
-.about ol {
-  padding-left: 20px; /* 列表整体的左侧内边距 */
-  margin-top: 16px; /* 列表与上方内容的距离 */
-  margin-bottom: 16px; /* 列表与下方内容的距离 */
-  counter-reset: list-counter; /* 初始化有序列表的计数器 */
+.info {
+  text-align: center;
 }
 
-.about ol li {
-  position: relative; /* 相对定位，用于显示数字样式 */
-  margin-bottom: 12px; /* 列表项之间的间距 */
-  line-height: 1.8; /* 行高，与段落一致 */
-  font-size: 16px; /* 列表字体大小 */
-  color: #444; /* 列表文字颜色 */
-  padding-left: 30px; /* 给列表项增加左内边距，用于数字和文字间隔 */
+.name {
+  color: #2d3748;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
-.about ol li::before {
-  content: counter(list-counter) "."; /* 获取计数器内容并添加 "." */
-  counter-increment: list-counter; /* 每次递增计数 */
-  position: absolute; /* 将数字绝对定位 */
-  left: 0; /* 数字距离左边框的位置 */
-  color: #007bff; /* 为数字添加清晰的蓝色提示 */
-  font-weight: bold; /* 数字加粗 */
-  font-size: 18px; /* 数字稍大，使其更分明 */
+.position {
+  color: #4299e1;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.bio {
+  color: #718096;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .profile-card {
+    padding: 1rem;
+  }
+
+  .avatar {
+    width: 80px;
+    height: 80px;
+  }
 }
 </style>

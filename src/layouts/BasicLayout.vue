@@ -22,7 +22,7 @@ const showHeaderAndFooter = computed(
       </a-layout-content>
       <a-layout-footer v-if="showHeaderAndFooter" class="footer">
         <CopyrightCircleOutlined />
-        2025 Guyvhu. All Rights Reserved
+        2025 Guyvehu. All Rights Reserved
       </a-layout-footer>
     </a-layout>
   </div>

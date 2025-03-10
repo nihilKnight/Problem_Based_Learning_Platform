@@ -26,7 +26,7 @@
       <section class="course-video">
         <div class="video-wrapper">
           <iframe
-            :src="course.video"
+            :src="course.video + '&autoplay=0'"
             class="video-iframe"
             allowfullscreen
           ></iframe>

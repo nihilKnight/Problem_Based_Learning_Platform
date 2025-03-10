@@ -41,7 +41,9 @@ import { useLoginUserStore } from "@/store/useLoginUserStore";
 import { NoLoginCode } from "@/main";
 
 const loginUserStore = useLoginUserStore();
-loginUserStore.fetchLoginUser();
+if (loginUserStore.loginUser.code === NoLoginCode) {
+  loginUserStore.fetchLoginUser();
+}
 
 const router = useRouter();
 
@@ -84,15 +86,6 @@ const items = ref<MenuProps["items"]>([
     key: "/about",
     label: "关于我们",
     title: "关于我们",
-  },
-  {
-    key: "others",
-    label: h(
-      "a",
-      { href: "https://github.com/roam30", target: "_blank" },
-      "Guyvhu's Github"
-    ),
-    title: "Guyvhu's Github",
   },
 ]);
 </script>

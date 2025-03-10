@@ -3,7 +3,8 @@ import axios, { AxiosInstance } from "axios";
 
 const myAxios: AxiosInstance = axios.create({
   // baseURL: "http://localhost:5000",
-  baseURL: "http://47.97.59.215",
+  // baseURL: "http://47.97.59.215",
+  baseURL: "https://www.thinkmed.top",
   timeout: 10000,
   withCredentials: true,
 });
